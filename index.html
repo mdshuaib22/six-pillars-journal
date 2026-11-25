@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FDFCF9">
+  <meta name="description" content="A digital edition of the 21-Day Six Pillars Wellness Journal — intentions, baseline reflection, habit tracker, and daily logs.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>21-Day Six Pillars Wellness Journal</title>
+  <link rel="icon" type="image/x-icon" href="icons/icon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Six Pillars Wellness Journal, back to top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Six Pillars<span class="brand-light"> · Wellness Journal</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Journal sections">
+        <a href="#foundation">Foundation</a>
+        <a href="#baseline">Baseline</a>
+        <a href="#tracker">Tracker</a>
+        <a href="#daily">Daily log</a>
+      </nav>
+      <div class="header-actions">
+        <span class="header-progress" id="headerProgress">0 / 21 days</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="installBtn" hidden>Install app</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="printBtn">Print</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <div class="container">
+        <div class="cover-card">
+          <div class="cover-copy">
+            <p class="eyebrow">A 21-day practice · Six daily pillars</p>
+            <h1 id="heroTitle">21-Day Six Pillars<br>Wellness Journal</h1>
+            <p class="hero-lede">Lasting transformation grows from small, faithful choices repeated with care. Over the next twenty-one days, define what each pillar looks like in your daily life so your intentions remain clear, realistic, and anchored in purpose.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#daily" id="beginBtn">Begin with Day 1</a>
+              <a class="btn btn-ghost" href="#tracker">View the tracker</a>
+            </div>
+          </div>
+          <aside class="cover-progress" aria-label="Your progress">
+            <p class="progress-label">Your journey</p>
+            <div class="progress-value"><span id="progressDays">0</span><span class="progress-of">/ 21 days</span></div>
+            <div class="progress-track" role="progressbar" aria-labelledby="progressDays" aria-valuemin="0" aria-valuemax="21" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div>
+            <dl class="progress-stats">
+              <div><dt>Commitments</dt><dd id="statCommitments">0 / 6</dd></div>
+              <div><dt>Habits marked</dt><dd id="statHabits">0 / 189</dd></div>
+              <div><dt>Reflections</dt><dd id="statReflections">0 / 21</dd></div>
+            </dl>
+            <p class="progress-note">Everything you write stays in this browser.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="foundation" aria-labelledby="foundationTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Foundation &amp; vision</p>
+          <h2 id="foundationTitle">Intention Setting &amp; My Six Pillars</h2>
+          <p class="section-intro">Choose one small, non-negotiable commitment for each pillar. Keep it clear enough to keep on a difficult day.</p>
+        </div>
+        <div class="paper-card">
+          <div class="table-scroll">
+            <table class="journal-table">
+              <thead><tr><th scope="col">Pillar</th><th scope="col">Focus area</th><th scope="col">My daily non-negotiable commitment</th></tr></thead>
+              <tbody id="pillarRows"></tbody>
+            </table>
+          </div>
+          <div class="prompt-block">
+            <label class="prompt-label" for="deeperWhy">My Deeper Why — Who am I becoming over these 21 days?</label>
+            <textarea id="deeperWhy" rows="4" data-save="deeperWhy" placeholder="Write the answer you want to return to on hard days…"></textarea>
+            <p class="field-hint">Saved automatically as you type.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="baseline" aria-labelledby="baselineTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Day 0 baseline</p>
+          <h2 id="baselineTitle">Starting-Point Self-Reflection</h2>
+          <p class="section-intro">Before beginning Day 1, pause and take an honest, compassionate snapshot of where you stand today across your habits, energy, and spiritual focus.</p>
+        </div>
+        <div class="prompt-grid" id="baselinePrompts"></div>
+      </div>
+    </section>
+
+    <section class="section" id="tracker" aria-labelledby="trackerTitle">
+      <div class="container">
+        <div class="section-head section-head-split">
+          <div>
+            <p class="eyebrow">Twenty-one days · Planting the seeds</p>
+            <h2 id="trackerTitle">Habit Tracker</h2>
+            <p class="section-intro">Mark each day you keep the habit. Select a day number below to open its journal log.</p>
+          </div>
+          <div class="tracker-legend" aria-hidden="true">
+            <span><i class="legend-dot legend-empty"></i> Not yet</span>
+            <span><i class="legend-dot legend-done"></i> Kept</span>
+          </div>
+        </div>
+        <div class="paper-card tracker-card">
+          <div class="tracker-scroll">
+            <table class="tracker-table" id="trackerTable">
+              <caption class="visually-hidden">Twenty-one day habit tracker. Select a day number to open that day's log.</caption>
+            </table>
+          </div>
+          <p class="tracker-footnote">Tip: click any day number in the header to jump straight to that day's journal log.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="daily" aria-labelledby="dailyTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" id="weekEyebrow">Week one · Planting the seeds</p>
+          <h2 id="dailyTitle">Daily Journal Logs</h2>
+          <p class="section-intro">Six pillars a day, with space for notes, small wins, and an evening reflection.</p>
+        </div>
+
+        <div class="week-tabs" role="tablist" aria-label="Journal week">
+          <button type="button" class="week-tab" role="tab" id="tab-w1" aria-controls="dayPanel" aria-selected="true" data-week="1">Week 1 <span>Days 1–7</span></button>
+          <button type="button" class="week-tab" role="tab" id="tab-w2" aria-controls="dayPanel" aria-selected="false" data-week="2" tabindex="-1">Week 2 <span>Days 8–14</span></button>
+          <button type="button" class="week-tab" role="tab" id="tab-w3" aria-controls="dayPanel" aria-selected="false" data-week="3" tabindex="-1">Week 3 <span>Days 15–21</span></button>
+        </div>
+
+        <div class="day-strip" id="dayStrip" role="group" aria-label="Select a day"></div>
+
+        <div class="day-panel" id="dayPanel" role="tabpanel" aria-labelledby="tab-w1" tabindex="0">
+          <div class="day-panel-header">
+            <div>
+              <p class="day-kicker" id="dayKicker">Day 01 of 21 — Week 1</p>
+              <h3 id="dayHeading">Daily log</h3>
+            </div>
+            <div class="day-meta">
+              <div class="field"><label for="logDate">Date</label><input type="date" id="logDate" data-save="date"></div>
+              <div class="field"><label for="logMood">Mood &amp; energy</label><input type="text" id="logMood" data-save="mood" placeholder="Steady, low, grateful…"></div>
+            </div>
+          </div>
+
+          <div class="table-scroll">
+            <table class="journal-table log-table">
+              <thead><tr><th scope="col">Pillar</th><th scope="col">Today's action / notes</th><th scope="col">Completed</th></tr></thead>
+              <tbody id="logRows"></tbody>
+            </table>
+          </div>
+
+          <div class="prompt-block reflection-block">
+            <label class="prompt-label" for="reflection">Gratitude, Wins &amp; Evening Reflection <span id="reflectionDay">(Day 1)</span></label>
+            <textarea id="reflection" rows="5" data-save="reflection" placeholder="What went well today? What are you grateful for? What would you carry forward?"></textarea>
+            <p class="field-hint">Saved automatically as you type.</p>
+          </div>
+
+          <div class="day-panel-footer">
+            <button type="button" class="btn btn-ghost btn-sm" id="prevDay">← Previous day</button>
+            <span class="day-save-status" id="daySaveStatus" role="status" aria-live="polite">All changes saved</span>
+            <button type="button" class="btn btn-primary btn-sm" id="nextDay">Next day →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="source" aria-labelledby="sourceTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">From the printed edition</p>
+          <h2 id="sourceTitle">The pages this journal began with</h2>
+          <p class="section-intro">The original layouts behind this edition — intention setting, baseline reflection, the 21-day tracker, and the daily logs.</p>
+        </div>
+        <div class="source-grid">
+          <figure class="source-card">
+            <button type="button" class="source-open" data-source="source-pages/pages-1-3.jpg">
+              <img src="source-pages/pages-1-3.jpg" alt="Printed journal pages 1 to 3: intention setting, six pillars, and starting-point self-reflection" loading="lazy">
+              <span class="source-zoom" aria-hidden="true">View full size</span>
+            </button>
+            <figcaption>Pages 1–3 · Intention setting &amp; baseline reflection</figcaption>
+          </figure>
+          <figure class="source-card">
+            <button type="button" class="source-open" data-source="source-pages/page-4.jpg">
+              <img src="source-pages/page-4.jpg" alt="Printed journal page 4: 21-day habit tracker and daily journal logs" loading="lazy">
+              <span class="source-zoom" aria-hidden="true">View full size</span>
+            </button>
+            <figcaption>Page 4 · Habit tracker &amp; daily journal logs</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="source-dialog" id="sourceDialog" aria-label="Journal page preview">
+    <button type="button" class="dialog-close" id="sourceClose" aria-label="Close preview">×</button>
+    <img id="sourceImage" alt="">
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">21-Day Six Pillars Wellness Journal</p>
+        <p class="footer-sub">Nourish · Hydrate · Move · Care · Connect · Grow</p>
+      </div>
+      <div class="footer-actions">
+        <button type="button" class="btn btn-ghost btn-sm" id="resetBtn">Reset journal</button>
+        <span class="footer-note" id="footerNote">Saved in this browser only</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sr-status" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
